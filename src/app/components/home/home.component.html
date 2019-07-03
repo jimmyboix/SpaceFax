@@ -1,18 +1,21 @@
 <div class="container d-flex justify-content-center" style="padding-top: 3%; color: white;"
   *ngIf="nextLaunch$ | async as nextLaunch; else noLaunchData">
-  <div class="card border-dark mb-3 my-auto" style="width: 50%; background-color: rgba(245, 245, 245, 0.2);">
+  <div class="card border-dark mb-3 my-auto"
+    style="width: 50%; background-color: rgba(245, 245, 245, 0.2); box-shadow: 5px 5px 5px black; ">
     <div class="card-header">
-      <div style="display: inline-block;">
-        <h5 style="padding: 0; margin: 0">Next Mission</h5>
-        <h4 style="text-align: left; float: left; padding: 0; margin: 0 "><b>{{nextLaunch.mission_name}}</b><span
-            class="badge badge-secondary"></span></h4>
-        <h6><span style="margin: 0;" class="badge badge-pill badge-dark"
-            *ngIf="nextLaunchDateUTC$ | async as nextLaunchDateUTC">{{nextLaunchDateUTC }}</span>
-        </h6>
-      </div>
-      <div style=" display: inline;">
-        <h6 style="text-align: right;float: right;"><img height="80px;" width="80px"
-            src="../../assets/not-found-image.jpg" alt="mission badge" class="img-thumbnail"></h6>
+      <div class="row">
+        <div class="col-9">
+          <h6 style="padding: 0; margin: 0">Next Mission</h6>
+          <h4 style="text-align: left; float: left; padding: 0; margin: 0; min-width: 100%; ">
+            <b>{{nextLaunch.mission_name}}</b><span class="badge badge-secondary"></span></h4>
+          <h6><span style="margin: 0;" class="badge badge-pill badge-dark"
+              *ngIf="nextLaunchDateUTC$ | async as nextLaunchDateUTC">{{nextLaunchDateUTC }} UTC</span>
+          </h6>
+        </div>
+        <div class="col-3">
+          <h6 style="text-align: right;float: right;"><img height="80px;" width="80px"
+              src="../../assets/not-found-image.jpg" alt="mission badge" class="img-thumbnail"></h6>
+        </div>
       </div>
     </div>
     <div class="card-body" *ngIf="nextLaunch$ | async as nextLaunch">
@@ -21,28 +24,27 @@
           <div class="card-group text-center" style="min-width: 100px; color: black">
             <div class="card card-counter">
               <div class="card-body">
-                <h1 class="card-title">$!d!</h1> <span class="countdown-text">DAYS</span>
+                <h1 class="card-title">$!d!</h1><span class="countdown-text">DAYS</span>
               </div>
             </div>
             <div class="card card-counter">
               <div class="card-body">
-                <h1 class="card-title">$!h!</h1> <span class="countdown-text">HOURS</span>
+                <h1 class="card-title">$!h!</h1><span class="countdown-text">HOURS</span>
               </div>
             </div>
             <div class="card card-counter">
               <div class="card-body">
-                <h1 class="card-title">$!m!</h1> <span class="countdown-text">MINS</span>
+                <h1 class="card-title">$!m!</h1><span class="countdown-text">MINS</span>
               </div>
             </div>
             <div class="card card-counter">
               <div class="card-body">
-                <h1 class="card-title">$!s!</h1> <span class="countdown-text">SECS</span>
+                <h1 class="card-title">$!s!</h1><span class="countdown-text">SECS</span>
               </div>
             </div>
           </div>
         </countdown>
       </h5>
-
       <p>
         <a class="btn btn-dark btn-xs" data-toggle="collapse" href="#launchDetails" role="button" aria-expanded="false"
           aria-controls="launchDetails" style="padding:0; width: 100%; margin: 0 auto;">
@@ -53,15 +55,29 @@
         <div class="col">
           <div class="collapse multi-collapse" id="launchDetails">
             <div class="card card-body" style="color: black">
-              <h5>Details:</h5>
-              <p class="card-text" *ngIf="nextLaunch.details != null; else noDesc">
+              <p class="launch-details " style="font-style: italic" *ngIf="nextLaunch.details != null; else noDesc">
                 {{nextLaunch.details}}
               </p>
               <ng-template #noDesc>
-                <p class="card-text">
-                  There are no details for this mission yet...
+                <p class="launch-details" style="font-style: italic">
+                  There is no description for this mission yet.
                 </p>
               </ng-template>
+              <p class="launch-details ">
+                Flight Number:<br> <b>{{nextLaunch.flight_number}}</b>
+              </p>
+              <p class="launch-details ">
+                Launch Site:<br> <b>{{nextLaunch.launch_site.site_name_long}}</b>
+              </p>
+              <p class="launch-details ">
+                Rocket:<br> <b>{{nextLaunch.rocket.rocket_name}}</b>
+              </p>
+              <p class="launch-details ">
+                Payload:<br>
+                <span *ngFor="let payload of nextLaunch.rocket.second_stage.payloads">
+                  <b>{{payload.payload_type}}</b>
+                </span>
+              </p>
             </div>
           </div>
         </div>
