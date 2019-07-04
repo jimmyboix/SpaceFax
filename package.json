@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-prod": "npm version patch && node ./replace.build.js && ng build --prod"
+    "build-prod": "npm version patch && node ./version.js && ng build --prod"
   },
   "private": true,
   "dependencies": {
