@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from 'src/app/services/home.service';
-import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from 'src/app/app.state';
 import { selectNextLaunch, selectNextLaunchCountDown, selectLaunchDate } from './home.reducers';
@@ -23,7 +21,7 @@ export class HomeComponent implements OnInit {
   nextLaunchCD$ = this._store.pipe(select(selectNextLaunchCountDown));
   nextLaunchDateUTC$ = this._store.pipe(select(selectLaunchDate));
 
-  constructor(private _store: Store<IAppState>) {
+  constructor(private store: Store<IAppState>) {
   }
 
   ngOnInit() {

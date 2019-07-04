@@ -6,7 +6,24 @@
   font-size: 0.7em
 }
 
-
 .launch-details {
-  font-size: 0.8em
+  font-size: 0.9ems
+}
+
+.mission-patch {
+  transition: transform .2s ease-in;
+  transform-origin: center center;
+  background-color: transparent;
+}
+
+.mission-patch:hover {
+  transition: transform .4s ease-in;
+  transform: scale(5) translate(0%, 50%);
+  z-index: 555555 !important;
+  position: relative;
+  background-color: #343a40;
+}
+
+.mission-patch .cd {
+  z-index: 1 !important;
 }

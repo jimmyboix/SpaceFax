@@ -14,11 +14,15 @@
         </div>
         <div class="col-3">
           <h6 style="text-align: right;float: right;"><img height="80px;" width="80px"
-              src="../../assets/not-found-image.jpg" alt="mission badge" class="img-thumbnail"></h6>
+              *ngIf="nextLaunch.links.mission_patch === null" src="../../assets/not-found-image.jpg" alt="mission badge"
+              class="img-thumbnail mission-patch"></h6>
+          <h6 style="text-align: right;float: right;"><img height="80px;" width="80px"
+              *ngIf="nextLaunch.links.mission_patch !== null" src="{{nextLaunch.links.mission_patch}}"
+              alt="mission badge" class="img-thumbnail mission-patch"></h6>
         </div>
       </div>
     </div>
-    <div class="card-body" *ngIf="nextLaunch$ | async as nextLaunch">
+    <div class="card-body cd" *ngIf="nextLaunch$ | async as nextLaunch">
       <h5 class="card-title">
         <countdown *ngIf="nextLaunchCD$ | async as countDown" [config]="{leftTime: countDown}">
           <div class="card-group text-center" style="min-width: 100px; color: black">
@@ -54,7 +58,7 @@
       <div class="row">
         <div class="col">
           <div class="collapse multi-collapse" id="launchDetails">
-            <div class="card card-body" style="color: black">
+            <div class="card card-body" style="color: black; background-color: rgba(245, 245, 245, 0.8);">
               <p class="launch-details " style="font-style: italic" *ngIf="nextLaunch.details != null; else noDesc">
                 {{nextLaunch.details}}
               </p>
@@ -73,11 +77,29 @@
                 Rocket:<br> <b>{{nextLaunch.rocket.rocket_name}}</b>
               </p>
               <p class="launch-details ">
-                Payload:<br>
-                <span *ngFor="let payload of nextLaunch.rocket.second_stage.payloads">
-                  <b>{{payload.payload_type}}</b>
-                </span>
-              </p>
+                Payload:<br></p>
+              <div class="table-responsive">
+                <table class="table table-sm table-dark table-striped  ">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">ID</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Orbit</th>
+                      <th scope="col">Mass (kg)</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngFor="let payload of nextLaunch.rocket.second_stage.payloads; index as i">
+                    <tr>
+                      <th scope="row">{{i+1}}</th>
+                      <td>{{payload.payload_id || 'Unknown'}}</td>
+                      <td>{{payload.payload_type || 'Unknown'}}</td>
+                      <td>{{payload.orbit || 'Unknown'}}</td>
+                      <td>{{payload.payload_mass_kg || 'Unknown'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

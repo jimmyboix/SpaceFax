@@ -13,7 +13,7 @@ export class HomeService {
 
   constructor(private http: HttpClient) { }
   getNextLaunch(): Observable<Launch> {
-    return this.http.get<Launch>('https://api.spacexdata.com/v3/launches/next/').pipe(
+    return this.http.get<Launch>('https://api.spacexdata.com/v3/launches/next').pipe(
       catchError(this.handleError<Launch>('getNextLaunch', null))
     );
   }

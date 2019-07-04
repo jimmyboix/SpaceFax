@@ -1,1 +1,8 @@
+.spaceFaxLogo {
+  transition: transform .2s ease-in;
+}
 
+
+.spaceFaxLogo:hover {
+  transform: scale(1.1);
+}

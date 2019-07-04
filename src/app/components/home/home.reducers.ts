@@ -5,10 +5,8 @@ import { createSelector } from '@ngrx/store';
 import { IAppState } from 'src/app/app.state';
 import { DatePipe } from '@angular/common';
 
-export const homeReducers = (
-    state = initialHomeState,
-    action: HomeActions
-): IHomeState => {
+export function homeReducers(state: IHomeState = initialHomeState, action: HomeActions):
+    IHomeState {
     switch (action.type) {
         case EHomeActions.GET_NEXT_SUCCESS: {
             return {
@@ -26,7 +24,7 @@ export const homeReducers = (
         default:
             return state;
     }
-};
+}
 
 export function getLaunchCountDown(launchDateUnix: number) {
     let launchCountdown = 0;

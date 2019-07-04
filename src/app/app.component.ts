@@ -11,7 +11,7 @@ export class AppComponent {
 
   title = 'SpaceFax';
 
-  constructor(private _store: Store<IAppState>) {
+  constructor(private store: Store<IAppState>) {
   }
 
 }

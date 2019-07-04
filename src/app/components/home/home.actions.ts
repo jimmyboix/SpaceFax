@@ -7,18 +7,18 @@ export enum EHomeActions {
     GET_NEXT_FAILURE = '[Home] get next launch data failure'
 }
 
-export class getNextLaunch implements Action {
+export class GetNextLaunch implements Action {
     public readonly type = EHomeActions.GET_NEXT_LAUNCH;
 }
 
-export class getNextLaunchSuccess implements Action {
+export class GetNextLaunchSuccess implements Action {
     public readonly type = EHomeActions.GET_NEXT_SUCCESS;
     constructor(public payload: Launch) { }
 }
 
-export class getNextLaunchFailure implements Action {
+export class GetNextLaunchFailure implements Action {
     public readonly type = EHomeActions.GET_NEXT_FAILURE;
     constructor(public payload: Error) { }
 }
 
-export type HomeActions = getNextLaunch | getNextLaunchSuccess | getNextLaunchFailure;
+export type HomeActions = GetNextLaunch | GetNextLaunchSuccess | GetNextLaunchFailure;
