@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { IAppState } from 'src/app/app.state';
 import { selectNextLaunch, selectNextLaunchCountDown, selectLaunchDate } from './home.reducers';
-import { getNextLaunch } from './home.actions';
+import { GetNextLaunch } from './home.actions';
 
 
 export interface Launch {
@@ -17,15 +17,15 @@ export interface Launch {
 })
 
 export class HomeComponent implements OnInit {
-  nextLaunch$ = this._store.pipe(select(selectNextLaunch));
-  nextLaunchCD$ = this._store.pipe(select(selectNextLaunchCountDown));
-  nextLaunchDateUTC$ = this._store.pipe(select(selectLaunchDate));
+  nextLaunch$ = this.store.pipe(select(selectNextLaunch));
+  nextLaunchCD$ = this.store.pipe(select(selectNextLaunchCountDown));
+  nextLaunchDateUTC$ = this.store.pipe(select(selectLaunchDate));
 
   constructor(private store: Store<IAppState>) {
   }
 
   ngOnInit() {
-    this._store.dispatch(new getNextLaunch());
+    this.store.dispatch(new GetNextLaunch());
 
   }
 
