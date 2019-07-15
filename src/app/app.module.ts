@@ -18,12 +18,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { DatePipe } from '@angular/common';
+import { PastComponent } from './components/past/past.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    PastComponent
   ],
   imports: [
     BrowserModule,
