@@ -1,21 +1,15 @@
-<div *ngIf="pastLaunches$ | async; else noLaunchData" >
-  <span *ngFor="let pastLaunch of pastLaunches$ | async">
-<div class="card-deck" >
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{pastLaunch?.mission_name}}</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
+<div class="container" *ngIf="pastLaunches$ | async; else noLaunchData">
+  <div class="card-deck">
+    <span *ngFor="let pastLaunch of pastLaunches$ | async">
+      <app-past-card [pastLaunch]="pastLaunch"></app-past-card>
+    </span>
   </div>
-</span>
 </div>
 
 <ng-template #noLaunchData>
-    <div class="container d-flex justify-content-center" style="padding: 5%">
-      <div class="spinner-border text-light" role="status" style="width: 10rem; height: 10rem;">
-        <span class="sr-only">Loading...</span>
-      </div>
+  <div class="container d-flex justify-content-center" style="padding: 5%">
+    <div class="spinner-border text-light" role="status" style="width: 10rem; height: 10rem;">
+      <span class="sr-only">Loading...</span>
     </div>
-  </ng-template>
+  </div>
+</ng-template>

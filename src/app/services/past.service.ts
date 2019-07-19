@@ -12,7 +12,7 @@ export class PastService {
 
   constructor(private http: HttpClient) { }
   getPastLaunches(): Observable<any> {
-    return this.http.get('https://api.spacexdata.com/v3/launches/past').pipe(
+    return this.http.get('https://api.spacexdata.com/v3/launches/past?order=desc').pipe(
       catchError(this.handleError('getPastLaunches', null))
     );
   }

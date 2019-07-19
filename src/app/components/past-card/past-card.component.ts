@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-past-card',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./past-card.component.scss']
 })
 export class PastCardComponent implements OnInit {
+
+  @Input()
+  pastLaunch: JSON;
 
   constructor() { }
 

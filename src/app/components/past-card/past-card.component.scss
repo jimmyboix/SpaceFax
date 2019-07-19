@@ -1,0 +1,47 @@
+.card-success {
+  background-color: rgba(0, 255, 34, 0.1);
+  box-shadow: 3px 3px 3px green;
+  overflow: hidden;
+  min-height: 250px;
+  max-height: 250px;
+}
+
+.card-failure {
+  background-color: rgba(255, 0, 13, 0.1);
+  box-shadow: 3px 3px 3px red;
+  overflow: hidden;
+  min-height: 250px;
+  max-height: 250px;
+}
+
+p {
+  font-size: 0.8em;
+}
+
+.missionPatch {
+  padding: 10px;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.carousel-control-prev-icon {
+  background-image: none;
+}
+
+.carousel-control-next-icon {
+  background-image: none;
+}
+
+.success {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.1em
+}
+
+.failure {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.1em
+}
