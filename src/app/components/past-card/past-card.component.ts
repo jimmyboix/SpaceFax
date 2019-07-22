@@ -8,9 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PastCardComponent implements OnInit {
 
   @Input()
-  pastLaunch: JSON;
+  pastLaunch: object;
   @Input()
-  cardId: Number;
+  cardId: number;
 
   constructor() { }
 
