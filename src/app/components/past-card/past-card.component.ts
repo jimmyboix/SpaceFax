@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PastCardComponent implements OnInit {
 
   @Input()
-  pastLaunch: object;
+  pastLaunch: any;
   @Input()
   cardId: number;
 
