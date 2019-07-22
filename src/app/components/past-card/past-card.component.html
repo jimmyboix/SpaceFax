@@ -13,7 +13,7 @@
           </fa-icon>
         </span>
       </span>
-      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleControls_{{cardId}}" class="carousel slide" data-interval="false">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="row" style="padding-left: 10px; padding-right: 10px">
@@ -25,37 +25,92 @@
               <div class="col-6 mx-auto">
                 <div class="container d-flex h-100">
                   <div class="row justify-content-center align-self-center">
-                    <span style="padding: 10px">
+                    <div class="card text-white bg-dark"
+                      style="padding: 10px; min-width: 150px; background-color:rgba(36, 36, 36, 0.8) !important ;">
                       <h4>{{pastLaunch.mission_name}}</h4>
                       <h6><span
-                          class="badge badge-pill badge-dark">{{pastLaunch.launch_date_utc | date:'longDate'}}</span>
+                          class="badge badge-pill badge-secondary">{{pastLaunch.launch_date_utc | date:'longDate'}}</span>
                       </h6>
-                    </span>
+                      <button class="btn btn-light btn-sm" popover="{{pastLaunch.details}}" container="body"
+                        style="padding: 1px">
+                        Launch Details <fa-icon [icon]="['fas', 'info-circle']" [styles]="">
+                        </fa-icon>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-
+            <div class="row" style="padding-left: 10px; padding-right: 10px">
+              <div class="col-7 mx-auto">
+                <p style="margin-top: 5px"><b><u>Rocket Name</u></b><br>{{pastLaunch.rocket.rocket_name}}</p>
+                <p><b><u>First Stage Core(s)</u></b><br>
+                  <span *ngFor="let core of pastLaunch.rocket.first_stage.cores; let i = index">
+                    <i>Core #{{i + 1}}</i><br>
+                    Block: {{core.block}} <br>
+                    Flights: {{core.flight}} <br>
+                    Landed: <span *ngIf="core.land_success == null">No Attempt</span>
+                    <span *ngIf="core.land_success == false">Failed</span>
+                    <span *ngIf="core.land_success == true">Success</span>
+                    <br><br *ngIf="(i + 1) !== pastLaunch.rocket.first_stage.cores.length"></span>
+                </p>
+              </div>
+              <div class="col-5 mx-auto">
+                <p style="margin-top: 25px" class="text-center"
+                  *ngIf="pastLaunch.rocket.rocket_id == 'falcon9' || pastLaunch.rocket.rocket_id == 'falconheavy'">
+                  <img style="max-height: 300px" src="../../../assets/falcon9.png"
+                    *ngIf="pastLaunch.rocket.rocket_id == 'falcon9'">
+                  <img style="max-height: 335px" src="../../../assets/falconheavy.png"
+                    *ngIf="pastLaunch.rocket.rocket_id == 'falconheavy'">
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="carousel-item">
-
+          <div class="carousel-item" *ngIf="pastLaunch.rocket.second_stage.payloads.length">
+            <div class="row" style="padding-left: 10px; padding-right: 10px">
+              <div class="col-10 mx-auto">
+                <p style="margin-top: 25px"><b><u>Second Stage Payload(s)</u></b><br>
+                  <span *ngFor="let payload of pastLaunch.rocket.second_stage.payloads; let i = index">
+                    <i>Payload #{{i + 1}}</i><br>
+                    ID: {{payload.payload_id}} <br>
+                    Type: {{payload.payload_type}} <br>
+                    Nationality: {{payload.nationality}} <br>
+                    Weight: {{payload.payload_mass_kg}} kg <br>
+                    Orbit: {{payload.orbit}} <br>
+                    <br>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item" *ngIf="pastLaunch.links.flickr_images.length">
+            <div class="row" style="padding-left: 10px; padding-right: 10px">
+              <div class="col-10 mx-auto">
+                <p style="margin-top: 25px">
+                  <span *ngFor="let image of pastLaunch.links.flickr_images; let i = index">
+                    <img src="{{image}}" class="img-thumbnail" alt="image {{i}}"
+                      style="max-height: 250px; max-width: 250px">
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <a class="carousel-control-prev" href="#carouselExampleControls_{{cardId}}" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true">
           <fa-icon [icon]="['fas', 'angle-left']" size="2x"
-            [styles]="{padding: 0, 'margin-left': '-40px', color: 'black'}">
+            [styles]="{padding: 0, 'margin-left': '-40px', color: 'white'}">
           </fa-icon>
         </span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <a class="carousel-control-next" href="#carouselExampleControls_{{cardId}}" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true">
           <fa-icon [icon]="['fas', 'angle-right']" size="2x"
-            [styles]="{padding: 0, 'margin-left': '20px', color: 'black'}">
+            [styles]="{padding: 0, 'margin-left': '20px', color: 'white'}">
           </fa-icon>
         </span>
         <span class="sr-only">Next</span>

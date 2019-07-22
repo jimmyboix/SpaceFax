@@ -14,9 +14,6 @@
         </div>
         <div class="col-3">
           <h6 style="text-align: right;float: right;"><img height="80px;" width="80px"
-              *ngIf="nextLaunch.links.mission_patch === null" src="../../assets/not-found-image.jpg" alt="mission badge"
-              class="img-thumbnail mission-patch"></h6>
-          <h6 style="text-align: right;float: right;"><img height="80px;" width="80px"
               *ngIf="nextLaunch.links.mission_patch !== null" src="{{nextLaunch.links.mission_patch}}"
               alt="mission badge" class="img-thumbnail mission-patch"></h6>
         </div>
@@ -50,10 +47,15 @@
         </countdown>
       </h5>
       <p>
-        <a class="btn btn-dark btn-xs" (click)="isOpen=!isOpen" data-toggle="collapse" href="#launchDetails" role="button" aria-expanded="false"
-          aria-controls="launchDetails" style="padding:0; width: 100%; margin: 0 auto;">
-          <span *ngIf="isOpen"><fa-icon [icon]="['fas', 'angle-up']" size="2x" [styles]="{padding: 0, margin: 0}"></fa-icon></span>
-          <span *ngIf="!isOpen"><fa-icon [icon]="['fas', 'angle-down']" size="2x" [styles]="{padding: 0, margin: 0}"></fa-icon></span>
+        <a class="btn btn-dark btn-xs" (click)="isOpen=!isOpen" data-toggle="collapse" href="#launchDetails"
+          role="button" aria-expanded="false" aria-controls="launchDetails"
+          style="padding:0; width: 100%; margin: 0 auto;">
+          <span *ngIf="isOpen">
+            <fa-icon [icon]="['fas', 'angle-up']" size="2x" [styles]="{padding: 0, margin: 0}"></fa-icon>
+          </span>
+          <span *ngIf="!isOpen">
+            <fa-icon [icon]="['fas', 'angle-down']" size="2x" [styles]="{padding: 0, margin: 0}"></fa-icon>
+          </span>
         </a>
       </p>
       <div class="row">

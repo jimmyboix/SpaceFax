@@ -1,7 +1,7 @@
 <div class="container" *ngIf="pastLaunches$ | async; else noLaunchData">
   <div class="card-deck">
-    <span *ngFor="let pastLaunch of pastLaunches$ | async">
-      <app-past-card [pastLaunch]="pastLaunch"></app-past-card>
+    <span *ngFor="let pastLaunch of pastLaunches$ | async; let i = index">
+      <app-past-card [pastLaunch]="pastLaunch" [cardId]=i></app-past-card>
     </span>
   </div>
 </div>

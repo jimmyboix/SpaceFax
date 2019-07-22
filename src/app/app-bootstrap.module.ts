@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 
 
@@ -13,9 +13,10 @@ import { ModalModule } from 'ngx-bootstrap/modal';
         CommonModule,
         BsDropdownModule.forRoot(),
         TooltipModule.forRoot(),
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        PopoverModule.forRoot()
     ],
-    exports: [BsDropdownModule, TooltipModule, ModalModule]
+    exports: [BsDropdownModule, TooltipModule, ModalModule, PopoverModule]
 })
 export class AppBootstrapModule {
 

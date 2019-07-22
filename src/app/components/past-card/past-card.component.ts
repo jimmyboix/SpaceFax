@@ -9,6 +9,8 @@ export class PastCardComponent implements OnInit {
 
   @Input()
   pastLaunch: JSON;
+  @Input()
+  cardId: Number;
 
   constructor() { }
 
