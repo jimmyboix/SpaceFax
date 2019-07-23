@@ -19,6 +19,7 @@ import { PastEffects } from './components/past/past.effects';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faYoutube, faWikipediaW, faReddit } from '@fortawesome/free-brands-svg-icons';
 import { DatePipe } from '@angular/common';
 import { PastComponent } from './components/past/past.component';
 import { PastCardComponent } from './components/past-card/past-card.component';
@@ -49,5 +50,8 @@ import { PastCardComponent } from './components/past-card/past-card.component';
 export class AppModule {
   constructor() {
     library.add(fas);
+    library.add(faYoutube);
+    library.add(faReddit);
+    library.add(faWikipediaW);
   }
 }

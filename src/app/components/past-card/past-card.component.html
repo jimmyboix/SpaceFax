@@ -31,8 +31,9 @@
                       <h6><span
                           class="badge badge-pill badge-secondary">{{pastLaunch.launch_date_utc | date:'longDate'}}</span>
                       </h6>
-                      <button class="btn btn-light btn-sm" popover="{{pastLaunch.details}}" container="body"
-                        style="padding: 1px">
+                      <button [ngClass]="{'disabled': pastLaunch.details==null}" class="btn btn-light btn-sm"
+                        popover="{{pastLaunch.details}}" [adaptivePosition]="false" placement="bottom"
+                        [outsideClick]="true" container="body" style="padding: 1px">
                         Launch Details <fa-icon [icon]="['fas', 'info-circle']" [styles]="">
                         </fa-icon>
                       </button>
@@ -88,10 +89,39 @@
           <div class="carousel-item" *ngIf="pastLaunch.links.flickr_images.length">
             <div class="row" style="padding-left: 10px; padding-right: 10px">
               <div class="col-10 mx-auto">
-                <p style="margin-top: 25px">
-                  <span *ngFor="let image of pastLaunch.links.flickr_images; let i = index">
-                    <img src="{{image}}" class="img-thumbnail" alt="image {{i}}"
-                      style="max-height: 250px; max-width: 250px">
+                <p style="margin-top: 25px"><b><u>Flickr Images</u></b><br><br>
+                  <span class="list-group">
+                    <span *ngFor="let img of pastLaunch.links.flickr_images; let i = index;">
+                      <a class="list-group-item list-group-item-action list-group-item-dark" target="_blank"
+                        href="{{img}}">Image {{i+1}}</a>
+                    </span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row" style="padding-left: 10px; padding-right: 10px">
+              <div class="col-10 mx-auto text-center">
+                <p style="margin-top: 25px"><span style="float: left"><b><u>Links</u></b></span><br><br>
+
+                  <span class="btn-group btn-group-lg text-center" role="group" aria-label="First group">
+                    <a [ngClass]="{'disabled': pastLaunch.links.video_link == null}" class="btn btn-secondary"
+                      href="{{pastLaunch.links.video_link}}" target="_blank">
+                      <fa-icon [icon]="['fab', 'youtube']" size="2x"></fa-icon>
+                    </a>
+                    <a [ngClass]="{'disabled': pastLaunch.links.reddit_campaign == null}" class="btn btn-secondary"
+                      href="{{pastLaunch.links.reddit_campaign}}" target="_blank">
+                      <fa-icon [icon]="['fab', 'reddit']" size="2x"></fa-icon>
+                    </a>
+                    <a [ngClass]="{'disabled': pastLaunch.links.wikipedia == null}" class="btn btn-secondary"
+                      href="{{pastLaunch.links.wikipedia}}" target="_blank">
+                      <fa-icon [icon]="['fab', 'wikipedia-w']" size="2x"></fa-icon>
+                    </a>
+                    <a [ngClass]="{'disabled': pastLaunch.links.presskit == null}" class="btn btn-secondary"
+                      href="{{pastLaunch.links.presskit}}" target="_blank">
+                      <fa-icon [icon]="['fas', 'rss']" size="2x"></fa-icon>
+                    </a>
                   </span>
                 </p>
               </div>
