@@ -50,11 +50,13 @@
         <a class="btn btn-dark btn-xs" (click)="isOpen=!isOpen" data-toggle="collapse" href="#launchDetails"
           role="button" aria-expanded="false" aria-controls="launchDetails"
           style="padding:0; width: 100%; margin: 0 auto;">
-          <span *ngIf="isOpen">
-            <fa-icon [icon]="['fas', 'angle-up']" size="2x" [styles]="{padding: 0, margin: 0}"></fa-icon>
+          <span style="pointer-events: none">
+            <fa-icon *ngIf="isOpen" [icon]="['fas', 'angle-up']" size="2x" [styles]="{padding: 0, margin: 0 }">
+            </fa-icon>
           </span>
-          <span *ngIf="!isOpen">
-            <fa-icon [icon]="['fas', 'angle-down']" size="2x" [styles]="{padding: 0, margin: 0}"></fa-icon>
+          <span style="pointer-events: none">
+            <fa-icon *ngIf="!isOpen" [icon]="['fas', 'angle-down']" size="2x" [styles]="{padding: 0, margin: 0}">
+            </fa-icon>
           </span>
         </a>
       </p>
