@@ -11,3 +11,12 @@ body {
 html {
   overflow-y: scroll;
 }
+
+@font-face {
+  font-family: 'SpaceMono';
+  src: url(./assets/fonts/SpaceMono-Regular.ttf);
+}
+
+body {
+  font-family: 'SpaceMono', sans-serif
+}

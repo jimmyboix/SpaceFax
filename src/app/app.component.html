@@ -1,10 +1,13 @@
 <nav class="navbar" style="background: rgba(255, 255, 255, 0.1);">
   <a routerLink="" class="mr-auto">
     <span class="navbar-brand spaceFaxLogo">
-      <h4 style=" font-family: 'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif; color: lightgray">SpaceFa<span
-          style=" font-style: italic; text-decoration: line-through; color: gray">cts</span>X</h4>
+      <!-- <h4 style=" font-family: 'Segoe UI' , Tahoma, Geneva, Verdana, sans-serif; color: lightgray">SpaceFa<span
+          style=" font-style: italic; text-decoration: line-through; color: gray">cts</span>X</h4> -->
+      <img src="../assets/spacefaxLogo2.png" width="300" height="auto">
     </span></a>
-  <a routerLink="/past-launches"><button class="btn btn-secondary ml-auto mr-3">Past Launches</button></a>
-  <a routerLink="/about"><button class="btn btn-secondary ml-auto">About</button></a>
+  <div class="btn-group"> <button class="btn btn-secondary ml-auto" routerLink="/past-launches">Past
+      Launches</button>
+    <button class="btn btn-secondary ml-auto" style="border-left-color: white; border-left-width: 2px"
+      routerLink="/about">About</button></div>
 </nav>
 <router-outlet></router-outlet>

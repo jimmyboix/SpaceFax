@@ -28,6 +28,10 @@ p {
   max-height: 200px;
 }
 
+.missionPatch:hover {
+  transform: scale(1.1);
+}
+
 .carousel-control-prev-icon {
   background-image: none;
 }
